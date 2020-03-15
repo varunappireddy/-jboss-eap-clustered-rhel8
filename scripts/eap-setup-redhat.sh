@@ -7,7 +7,7 @@ export NODENAME1="node1"
 export NODENAME2="node2"
 export SVR_CONFIG="standalone-ha.xml"
 export PORT_OFFSET=100
-
+export ssh_key=$7
 export EAP_USER=$2
 export EAP_PASSWORD=$3
 export RHSM_USER=$4
@@ -94,6 +94,7 @@ mkdir /home/$1/.ssh
 ssh-keygen -q -N $4 -f /home/$1/.ssh/id_rsa
 cd /home/$1/.ssh
 cp id_rsa.pub authorized_keys
+echo $ssh_key >> authorized_keys
 chown -R $1.jboss .
 chown -R $1.jboss *
 echo "SSH User name:  "$1 > /home/$1/vsts_ssh_info
